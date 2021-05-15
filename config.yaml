@@ -1,0 +1,35 @@
+version: 0.01
+src: 
+  host: rr-wz9ze9abh7y495b99io.mysql.rds.aliyuncs.com
+  user: all_data_reader
+  pwd: itnNjXofTruKud19
+  dbname: spa_finances_2021
+  port: 3306
+dst: 
+  host: 127.0.0.1
+  user: root
+  pwd: 123456
+  dbname: spa_finances_2021
+  port: 3306 
+table:
+  - name: financial_event_group
+    unique: financial_event_group_id
+    paging: False
+    batch: 2000
+    omit:
+      - uuid
+      - created_at
+      - updated_at
+      - deleted_at
+      - ext_sum
+      - ext_sync_event_time
+      - financial_event_group_end
+      - financial_event_group_start
+      - fund_transfer_date
+    where: 
+#      -
+#  - name: item_trace
+#    paging: True
+#    batch: 1000
+#    where:
+#      -
