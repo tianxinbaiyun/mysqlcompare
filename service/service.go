@@ -110,9 +110,23 @@ func Compare() {
 						data.fields = append(data.fields, fields[i].Name)
 					}
 				}
+				// 比对完成，删除对应的map
+				delete(dstMaps, row[uniqueI])
 
 				// 如果不一样的字段存在，提交到处理的队列
 				if len(data.fields) > 0 {
+					data.Put()
+				}
+			}
+
+			if len(dstMaps) > 0 {
+				for s, row := range dstMaps {
+					data := &Data{
+						Unique:   s,
+						Row:      row,
+						fields:   []string{"-all"},
+						TryTimes: 0,
+					}
 					data.Put()
 				}
 			}
@@ -125,7 +139,7 @@ func Compare() {
 				break
 			}
 		}
-		log.Printf("compare done Table %s sync count %d", table.Name, syncCount)
+		log.Printf("compare done Table %s ， count %d", table.Name, syncCount)
 	}
 	return
 }
