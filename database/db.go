@@ -80,7 +80,7 @@ func GetFieldList(db *sql.DB, tableName string) (fields []string, err error) {
 	return
 }
 
-// GetRow 查询数据
+// GetRows 查询数据
 func GetRows(db *sql.DB, table config.TableInfo, offset int64, size int64) (ret [][]string, newOffset int64, err error) {
 	var rows *sql.Rows
 

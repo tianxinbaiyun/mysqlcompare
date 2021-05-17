@@ -35,7 +35,7 @@ func (s *Data) Put() {
 	DataChan <- s
 }
 
-// Save 保存数据数据
+// Operation 保存数据数据
 func (s *Data) Operation() {
 	atomic.AddInt64(&DataCount, 1)
 	log.Println(DataCount, s.Unique, s.fields)

@@ -98,7 +98,7 @@ func Compare() {
 				}
 
 				// 循环对比字段
-				for i, _ := range row {
+				for i := range row {
 					if fields[i].Omit {
 						continue
 					}

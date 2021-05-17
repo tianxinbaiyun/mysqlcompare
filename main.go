@@ -34,6 +34,7 @@ func main() {
 
 }
 
+// Compare 对比
 func Compare() {
 	service.Compare()
 }
